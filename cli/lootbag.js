@@ -1,7 +1,7 @@
-
 const sqlite3 = require('sqlite3').verbose();
 const { createTables } = require("./makeTable");
 const { addChild } = require("./addChild");
+const {listChildren} = require("./listChild");
 
 (function createDb() {
   new sqlite3.Database('../bagOLoot.sqlite', () => {
@@ -20,7 +20,11 @@ if (process.argv[2] === "add"){
         console.log(data,"data");
     })
 } else if (process.argv[2] === "remove"){
-   
+   getChildren();
+
+   removeToy();
+} else if (process.argv[2]==="ls"){
+  listChildren();
 }
 
 console.log(process.argv[2]);
