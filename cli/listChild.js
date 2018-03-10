@@ -15,3 +15,17 @@ module.exports.listChildren = () =>{
         
       });
 }
+
+module.exports.listToy = (name) =>{
+    return new Promise((resolve, reject) => {
+        db.all("SELECT * FROM children", (err, allRows) => {
+            // allRows is an array containing each row from the query
+            allRows.forEach(each => {
+              if (each.name === name){
+                  console.log(each.toy);
+              }
+            });
+          });
+        
+      });
+}
