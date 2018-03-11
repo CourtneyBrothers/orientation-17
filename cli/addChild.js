@@ -9,7 +9,7 @@ module.exports.getChildren = () => {
 };
 
 
-module.exports.addChild = ({toy, name}) => {
+module.exports.addChild = (toy, name) => {
     console.log("toy and name",toy,name);
 
   return new Promise((resolve, reject) => {

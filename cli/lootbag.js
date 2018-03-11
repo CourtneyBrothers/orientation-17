@@ -3,6 +3,8 @@ const { createTables } = require("./makeTable");
 const { addChild } = require("./addChild");
 const {listChildren} = require("./listChild");
 const {listToy} = require("./listChild");
+const {updateStatus,updateNaughtyStatus } = require("./updateStatus");
+
 
 (function createDb() {
   new sqlite3.Database('../bagOLoot.sqlite', () => {
@@ -17,6 +19,7 @@ const {listToy} = require("./listChild");
 }());
 
 if (process.argv[2] === "add"){
+  
     addChild(process.argv[3],process.argv[4]).then(data=>{
         console.log(data,"data");
     })
@@ -28,6 +31,10 @@ if (process.argv[2] === "add"){
   listToy(process.argv[3]);
 } else if (process.argv[2]==="ls"){
   listChildren();
+} else if (process.argv[2]==="delivered"){
+  updateStatus(process.argv[3]);
+} else if (process.argv[2]==="naughy"){
+  updateNaughtyStatus(process.argv[3]);
 }
 
 console.log(process.argv[2]);
