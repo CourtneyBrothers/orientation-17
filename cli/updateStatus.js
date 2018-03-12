@@ -10,8 +10,8 @@ module.exports.updateStatus = (name) => {
     return new Promise((resolve, reject) => {
         let data = ["Y", name];
         let sql = `UPDATE children
-        SET delivered = ?
-        WHERE name = ?`;
+        SET delivered = "Y"
+        WHERE name = "${name}"`;
         db.run(sql, data, function(err) {
             if (err) {
             return console.error(err.message);
@@ -26,11 +26,10 @@ module.exports.updateStatus = (name) => {
 module.exports.updateNaughtyStatus = (name) => {
 
     return new Promise((resolve, reject) => {
-        let data = ["Y", name];
-        let sql = `UPDATE children
-        SET naughty = ?
-        WHERE name = ?`;
-        db.run(sql, data, function(err) {
+
+        db.run(`UPDATE children
+        SET naughty = "Y"
+        WHERE name = "${name}"`, function(err) {
             if (err) {
             return console.error(err.message);
             }

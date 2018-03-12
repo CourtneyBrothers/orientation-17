@@ -5,36 +5,26 @@ const {listChildren} = require("./listChild");
 const {listToy} = require("./listChild");
 const {removeToy} =require("./removeToy");
 const {updateStatus,updateNaughtyStatus } = require("./updateStatus");
+const db = new sqlite3.Database("../bagOLoot.sqlite", err => {
+  if (err) return console.log("error ");
+  console.log("Connection to db successful");
+});
 
-
-(function createDb() {
-  new sqlite3.Database('../bagOLoot.sqlite', () => {
-    createTables()
-    .then( (data) => {
-      console.log("children ids", data);
-    })
-    .catch( (err) => {
-      console.log("oops", err);
-    });
-  });
-}());
 
 if (process.argv[2] === "add"){
   
     addChild(process.argv[3],process.argv[4]).then(data=>{
         console.log(data,"data");
-    })
+  })
 } else if (process.argv[2] === "remove"){
-
    removeToy(process.argv[3],process.argv[4]);
-
-} else if (process.argv[2] === "ls" && [process.argv[3]]){
+}else if (process.argv[2] === "ls" && process.argv[3] != undefined){
   listToy(process.argv[3]);
 } else if (process.argv[2]==="ls"){
   listChildren();
 } else if (process.argv[2]==="delivered"){
   updateStatus(process.argv[3]);
-} else if (process.argv[2]==="naughy"){
+} else if (process.argv[2]==="naughty"){
   updateNaughtyStatus(process.argv[3]);
 }
 
