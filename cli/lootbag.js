@@ -3,6 +3,7 @@ const { createTables } = require("./makeTable");
 const { addChild } = require("./addChild");
 const {listChildren} = require("./listChild");
 const {listToy} = require("./listChild");
+const {removeToy} =require("./removeToy");
 const {updateStatus,updateNaughtyStatus } = require("./updateStatus");
 
 
@@ -24,9 +25,9 @@ if (process.argv[2] === "add"){
         console.log(data,"data");
     })
 } else if (process.argv[2] === "remove"){
-   getChildren();
 
-   removeToy();
+   removeToy(process.argv[3],process.argv[4]);
+
 } else if (process.argv[2] === "ls" && [process.argv[3]]){
   listToy(process.argv[3]);
 } else if (process.argv[2]==="ls"){
