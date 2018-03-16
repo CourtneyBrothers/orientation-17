@@ -15,7 +15,11 @@ describe('remove toy for a Child',()=>{
     it('should be a function',()=>{
         isFunction(removeToy);
     });
-    it('should return an undefined if children id >4 is passed in',()=>{
-        expect(removeToy(10)).to.be.an('undefined');
+    it('should verify that toy was removed',()=>{
+       const expected = "Toy removed from DB";
+       return removeToy()
+       .then((msg)=>{
+           equal(msg,expected)
+       })
     });
 });

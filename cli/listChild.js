@@ -23,6 +23,7 @@ module.exports.listToy = (name) =>{
             allRows.forEach(each => {
               if (each.name === name){
                   console.log(each.toy);
+                  resolve(each)
               }
             });
           });

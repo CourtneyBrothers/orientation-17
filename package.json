@@ -14,7 +14,9 @@
     "mocha": "^5.0.4"
   },
   "scripts": {
-    "test": "mocha -R list --watch"
+    "test": "mocha -R list --watch",
+    "build_db": "node cli/makeTable.js",
+    "run": "node lootbag.js"
   },
   "repository": {
     "type": "git",

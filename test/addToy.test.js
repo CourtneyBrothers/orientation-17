@@ -4,7 +4,14 @@ const {addChild} = require("../cli/addChild");
 const {should} = require('chai');
 const { createTables } = require("../cli/makeTable");
 
-
+describe("lootbag",()=>{
+    beforeEach((done)=>{
+        createTables()
+        .then(()=>{
+            done()
+        });
+    });
+});
 
 describe('add toy for a Child',()=>{
 

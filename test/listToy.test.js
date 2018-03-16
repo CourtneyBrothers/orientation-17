@@ -7,7 +7,7 @@ const { createTables } = require("../cli/makeTable");
 
 
 
-describe('list all Toy recieving presents',()=>{
+describe('list toy by Child',()=>{
     // beforeEach((done)=>{
     //     createTables()
     //     .then(()=>{  // probably unnecessary but may want to ask about this
@@ -17,4 +17,10 @@ describe('list all Toy recieving presents',()=>{
     it('should be a function',()=>{
         isFunction(listToy);
     });
+    it.skip('should return an array',()=>{
+        return listToy()
+        .then((data) =>{
+            isArray(data);
+        })
+    })
 });
